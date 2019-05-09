@@ -25,7 +25,8 @@ $app->add(function($request, $response, $next) {
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/', \App\Controllers\HomeController::class . ':get')->setName('home');
+$app->get('/', \App\Controllers\HomeController::class . ':get');
+$app->post('/login', \App\Controllers\LoginController::class . ':login');
 
 //$app->get('/login', \App\Controllers\AccountController::class . ':get')->setName('login');
 

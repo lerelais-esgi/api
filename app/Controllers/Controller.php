@@ -6,9 +6,11 @@ use Slim\Http\Response;
 
 class Controller {
     private $container;
+    private $secret;
 
     public function __construct($container) {
         $this->container = $container;
+        $this->secret = "abcdefghijklmnopqrstuvwxyz";
     }
 
     public function __get($name) {
@@ -19,5 +21,15 @@ class Controller {
     }
     public function container() {
         return $this->container;
+    }
+    protected function encrypt($to_crypt) {
+        $salt = openssl_random_pseudo_bytes(openssl_cipher_iv_length(ENCRYPT_METHOD));
+        $to_crypt = openssl_encrypt($to_crypt, ENCRYPT_METHOD, $this->secret, 0, $salt);
+        return $salt.$to_crypt;
+    }
+
+    protected function decrypt($to_decrypt) {
+        $saltlen = openssl_cipher_iv_length(ENCRYPT_METHOD);
+        return rtrim(openssl_decrypt(substr($to_decrypt, $saltlen), ENCRYPT_METHOD, $this->secret, 0, substr($to_decrypt, 0, $saltlen)), "\0");
     }
 }
