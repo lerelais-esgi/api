@@ -1,0 +1,21 @@
+{
+    "name": "lerelais-esgi/api",
+    "description": "Le Relais API",
+    "authors": [
+        {
+            "name": "Rostan KEZAL",
+            "email": "rostan@kezal.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.12",
+        "swiftmailer/swiftmailer": "^6.1",
+        "respect/validation": "^1.1",
+        "php-kit/ext-pdo": "^1.1"
+    }
+}
