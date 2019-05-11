@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+define('ENCRYPT_METHOD', 'aes-256-cbc');
 use Slim\Http\Response;
 
 class Controller {

@@ -16,6 +16,11 @@
         "slim/slim": "^3.12",
         "swiftmailer/swiftmailer": "^6.1",
         "respect/validation": "^1.1",
-        "php-kit/ext-pdo": "^1.1"
+        "php-kit/ext-pdo": "^1.1",
+        "ext-json": "^1.6",
+        "ext-openssl": "^7.2",
+        "ext-PDO": "^7.2",
+        "ext-curl": "^7.2",
+        "openfoodfacts/openfoodfacts-php": "^0.1.1"
     }
 }

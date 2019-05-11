@@ -14,13 +14,13 @@ final class LoginController extends Controller
             $r = $this->container()->db->prepare('SELECT * FROM `users` WHERE email = :e');
             $r->execute(['e' => $_POST['email']]);
             $r = $r->fetch(\PDO::FETCH_LAZY);
-            if ($this->decrypt($r['password']) === $_POST['password']) {
+            if ($this->decrypt($r['password']) == $_POST['password']) {
                 $t = bin2hex(openssl_random_pseudo_bytes(16));
-                $r = ['logged' => true, 'token' => $t];
                 $this->container()->db->prepare("UPDATE `users` SET `token` = ?, `last_ip` = ? WHERE id = ?")
-                    ->execute([$t, $_SERVER['REMOTE_ADDR'], $r['uid']]);
+                        ->execute([$t, $_SERVER['REMOTE_ADDR'], $r['id']]);
+                $r = ['logged' => true, 'token' => $t];
             } else {
-                $r = ['logged' => false, 'token' => '-1'];
+                $r = ['logged' => false, 'token' => '0'];
             }
 
         }
