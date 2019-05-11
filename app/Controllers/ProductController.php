@@ -11,6 +11,11 @@ use Slim\Http\Request;
 final class ProductController extends Controller
 {
 
+    /**
+     * @param Response $response
+     * @param int $code
+     * @return array
+     */
     private function requestOFF(Response $response, $code) {
         $api = new Api('food', 'fr-fr');
         try {
@@ -25,6 +30,13 @@ final class ProductController extends Controller
         return $r;
     }
 
+    /**
+     * @method GET
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return Response
+     */
     public function getInfo(Request $request, Response $response, $args)
     {
         if(isset($args["code"])) {

@@ -8,6 +8,12 @@ use Slim\Http\Request;
 final class LoginController extends Controller
 {
 
+    /**
+     * @method POST
+     * @param Request $request
+     * @param Response $response
+     * @return false|string
+     */
     public function login(Request $request, Response $response)
     {
         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {

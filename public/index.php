@@ -20,13 +20,13 @@ $container = $app->getContainer();
 
 
 // Middlewares
-
-$app->add(new \App\Middlewares\APIMiddleware());
+$app->add(new \App\Middlewares\APIMiddleware($container));
 $app->add(new \App\Middlewares\HeaderMiddleware());
 
 $app->get('/', \App\Controllers\HomeController::class . ':get');
 $app->post('/login', \App\Controllers\LoginController::class . ':login');
-$app->post('/product/getInfo/[{code}]', \App\Controllers\ProductController::class . ':getInfo');
+$app->get('/product/getInfo/[{code}]', \App\Controllers\ProductController::class . ':getInfo');
+$app->get('/account/getInfo/', \App\Controllers\ProductController::class . ':getInfo');
 
 //$app->get('/login', \App\Controllers\AccountController::class . ':get')->setName('login');
 

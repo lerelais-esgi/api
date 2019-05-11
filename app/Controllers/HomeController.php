@@ -7,9 +7,15 @@ use Slim\Http\Request;
 
 class HomeController extends Controller {
 
-    public function get(Request $request,  Response $response) {
+    /**
+     * @method GET
+     * @param Request $request
+     * @param Response $response
+     * @return false|string
+     */
+    public function get(Request $request, Response $response) {
         $r['status'] = 'ok';
-        $r['message'] = 'Welcome to LeRelais API';
+        $r['message'] = 'Welcome to Le Relais API';
         return json_encode($r);
     }
 }
