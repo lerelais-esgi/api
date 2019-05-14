@@ -23,7 +23,7 @@ final class LoginController extends Controller
             if ($this->decrypt($r['password']) == $_POST['password']) {
                 $t = bin2hex(openssl_random_pseudo_bytes(16));
                 $this->container()->db->prepare("UPDATE `users` SET `token` = ?, `last_ip` = ? WHERE id = ?")
-                        ->execute([$t, $_SERVER['REMOTE_ADDR'], $r['id']]);
+                       ->execute([$t, $_SERVER['REMOTE_ADDR'], $r['id']]);
                 $r = ['logged' => true, 'token' => $t];
             } else {
                 $r = ['logged' => false, 'token' => '0'];

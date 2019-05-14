@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use Slim\Http\Response;
 use Slim\Http\Request;
-
-class HomeController extends Controller {
+final class HomeController extends Controller {
 
     /**
      * @method GET

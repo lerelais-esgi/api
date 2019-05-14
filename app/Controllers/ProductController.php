@@ -8,7 +8,7 @@ use Slim\Http\Body;
 use Slim\Http\Response;
 use Slim\Http\Request;
 
-final class ProductController extends Controller
+class ProductController extends Controller
 {
 
     /**
@@ -41,11 +41,11 @@ final class ProductController extends Controller
     {
         if(isset($args["code"])) {
             $d = $this->requestOFF($response, $args["code"]);
-            $response = $response->withStatus($d['code'])->write(json_encode($d));
+            $response = $response->withStatus(200)->write(json_encode($d));
             return $response;
         }
         else {
-            $r = ["code" => "400", "message" => "Product code not provided"];
+            $r = ["code" => 400, "message" => "Product code not provided"];
             return $response->withStatus(400)->write(json_encode($r));
         }
 
