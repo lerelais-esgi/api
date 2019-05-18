@@ -7,6 +7,7 @@ use Slim\Http\Response;
 class APIMiddleware {
 
     private $container;
+    private $user;
     public function __construct($container) {
         $this->container = $container;
     }
@@ -26,12 +27,13 @@ class APIMiddleware {
                         ->withBody($body)
                         ->withStatus(403);
                 }
-                $_SESSION["u"] = [
+                $this->user = [
                     "e" => $r["email"],
                     "f" => $r["firstname"],
                     "l" => $r["lastname"],
                     "a" => $r["address"]
                 ];
+                $request = $request->withAttribute('user', $this->user);
                 return $next($request, $response);
             } else if ($request->getUri()->getPath() == "/login" || $request->getUri()->getPath() == "/") {
                 return $next($request, $response);
