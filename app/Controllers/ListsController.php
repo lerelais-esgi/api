@@ -21,14 +21,17 @@ class ListsController extends Controller
     }
 
     public function add(Request $request, Response $response) {
-        /*$list = [
+        $list = [
             "peoductname" => [
                 "limit" => 'date',
                 "barecode" => '8000500267035',
                 "type"  => "food",
                 "quanity" => '8'
             ]
-        ];*/
+        ];
+        $list = json_decode($list, true);
+        foreach ($list as $product =)
+
 
 
 
