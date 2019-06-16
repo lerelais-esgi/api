@@ -30,7 +30,9 @@ class ListsController extends Controller
             ]
         ];
         $list = json_decode($list, true);
-        foreach ($list as $product =)
+        foreach($list as $product = $info) {
+
+        }
 
 
 
